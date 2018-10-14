@@ -1,14 +1,6 @@
-const alexa = require("alexa-app");
-const app = new alexa.app("sample");
+const alexa = require('alexa-app');
 
-app.intent("number", {
-    "slots": { "number": "AMAZON.NUMBER" },
-    "utterances": ["say the number {-|number}"]
-  },
-  function(request, response) {
-    var number = request.slot("number");
-    response.say("You asked for the number " + number);
-  }
-);
+const AlexaApp = alexa.app;
+const app = new AlexaApp('random Pokemon');
 
 exports.handler = app.lambda();
