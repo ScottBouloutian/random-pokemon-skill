@@ -1,13 +1,18 @@
 {
-    "scripts": {
-        "lint": "eslint **/*.js"
+    "alexa": {
+        "applicationId": "amzn1.ask.skill.fe60bd3c-6410-491c-bc5c-33cd6daad63e"
+    },
+    "dependencies": {
+        "alexa-app": "^4.2.2",
+        "axios": "^0.18.0",
+        "lodash": "^4.17.11"
     },
     "devDependencies": {
         "eslint": "^5.7.0",
         "eslint-config-airbnb-base": "^13.1.0",
         "eslint-plugin-import": "^2.14.0"
     },
-    "dependencies": {
-        "alexa-app": "^4.2.2"
+    "scripts": {
+        "lint": "eslint **/*.js"
     }
 }
