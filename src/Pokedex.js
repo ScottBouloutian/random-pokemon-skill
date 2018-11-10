@@ -13,23 +13,6 @@ class Pokedex {
     */
     constructor() {
         this.host = 'https://pokeapi.co/api/v2';
-        this.pokemonCount = 0;
-    }
-
-    /**
-    * Initializes the pokedex by making a request to get the number of pokemon available from the
-    * api
-    * @returns {Promise} A promise that resolves when initialization is complete
-    */
-    initialize() {
-        const params = {
-            limit: 0,
-            offset: 0,
-        };
-        return axios.get(`${this.host}/pokemon`, { params })
-            .then(({ count }) => {
-                this.pokemonCount = count;
-            });
     }
 
     /**
@@ -37,14 +20,13 @@ class Pokedex {
     * @returns {Promise} A promise that resolves with pokemon data
     */
     randomPokemon() {
-        const params = {
-            limit: 1,
-            offset: _.random(this.pokemonCount),
-        };
-        return Promise.resolve()
-            .then(() => axios.get(`${this.host}/pokemon`, { params }))
-            .then(({ results }) => axios.get(results[0].url));
+        return axios.get(`${this.host}/pokemon`)
+            .then((response) => {
+                const pokemon = _.sample(response.data.results);
+                return axios.get(pokemon.url);
+            })
+            .then(response => response.data);
     }
 }
 
-export default Pokedex;
+module.exports = Pokedex;

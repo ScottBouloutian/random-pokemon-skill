@@ -1,0 +1,9 @@
+service: random-pokemon-skill
+provider:
+  name: aws
+  runtime: nodejs8.10
+functions:
+  index:
+    handler: index.handler
+    events:
+      - alexaSkill: amzn1.ask.skill.fe60bd3c-6410-491c-bc5c-33cd6daad63e
